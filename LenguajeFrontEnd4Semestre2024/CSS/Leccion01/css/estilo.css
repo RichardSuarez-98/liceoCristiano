@@ -1,3 +1,7 @@
+p.bordado{
+    text-align: center;
+    background-color: red;
+     }
 /*h2{
     text-align: center;
     background-color: yellow;
@@ -25,7 +29,4 @@ background-color: blue;
  }*/
 
 
- .bordado h1{
-text-align: center;
-background-color: red;
- }
+
