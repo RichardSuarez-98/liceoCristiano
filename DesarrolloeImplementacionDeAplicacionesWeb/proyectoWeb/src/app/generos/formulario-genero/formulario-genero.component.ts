@@ -22,8 +22,7 @@ export class FormularioGeneroComponent implements OnInit {
   @Output()
   posteoFormulario = new EventEmitter<GenerosCreacionDTO>();
 
-  @Input()
-  modelo?: GeneroDTO;
+  @Input() modelo?: GeneroDTO;
 
 
 
