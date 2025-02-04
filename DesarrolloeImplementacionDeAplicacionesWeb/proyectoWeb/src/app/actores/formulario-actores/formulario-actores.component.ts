@@ -9,6 +9,7 @@ import {ChangeDetectionStrategy} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { InputImgComponent } from "../../compartidos/componentes/input-img/input-img.component";
+import moment from 'moment';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -72,6 +73,7 @@ export class FormularioActoresComponent implements OnInit {
     }
 
     const actor = this.form.value as ActorCreacionDTO;
+    actor.fechaNacimiento= moment(actor.fechaNacimiento).toDate();
     this.posteoFormulario.emit(actor);
 
   }
