@@ -6,7 +6,7 @@ import { GeneroDTO, GenerosCreacionDTO } from '../generos';
 import {MatTableModule} from '@angular/material/table';
 import { paginacionDTO } from '../../compartidos/modelos/paginacionDTO';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -18,7 +18,7 @@ import Swal from 'sweetalert2'
 export class IndiceGenerosComponent {
   columnasMostrar: string[] = ['Id', 'Nombre', 'Accion'];
 
-  generos= inject(GenerosService);
+  generosService= inject(GenerosService);
   listaGeneros!: GeneroDTO[];
 
   paginacion:paginacionDTO={pagina:1, recordsPorPagina:5}
@@ -29,7 +29,7 @@ export class IndiceGenerosComponent {
   }
 
   cargarListadoGeneros(){
-    this.generos.obtenerGenerosPaginacion(this.paginacion)
+    this.generosService.obtenerGenerosPaginacion(this.paginacion)
                 .subscribe((resppuesta:HttpResponse<GeneroDTO[]>)  =>{
       this.listaGeneros=resppuesta.body as GeneroDTO[];
       console.log(this.listaGeneros);
@@ -43,7 +43,8 @@ export class IndiceGenerosComponent {
     this.cargarListadoGeneros();
   }
   
-  borrar(){
+  borrar(idUnico:number){
+    console.log("Este es el id a eliminar"+idUnico);
     Swal.fire({
       title: "¿Esta seguro de elimnar este registro?",
       text: "Esta accion es irreversible!",
@@ -55,10 +56,33 @@ export class IndiceGenerosComponent {
       confirmButtonText: "Si, quiero eliminar!"
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Se elimino correctamente!",
-          text: "Your file has been deleted.",
-          icon: "success"
+        this.generosService.eliminarGeneros(idUnico).subscribe({
+          
+          next: (generoEliminar)=>{
+          this.cargarListadoGeneros();
+            Swal.fire({
+              title: "Se elimino correctamente!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            })
+          },
+          error: (error:HttpErrorResponse)=>{
+            if(error.status === 404){
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Lo sentimos ocurrió un error al eliminar el género: "+error.statusText,
+              });
+            }else{
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.message,
+              });
+            }
+          }
+
+
         });
       }
     });

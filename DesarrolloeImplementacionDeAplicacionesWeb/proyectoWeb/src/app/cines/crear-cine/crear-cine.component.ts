@@ -5,7 +5,7 @@ import { FormularioCinesComponent } from "../formulario-cines/formulario-cines.c
 
 @Component({
   selector: 'app-crear-cine',
-  imports: [MapaComponent, FormularioCinesComponent],
+  imports: [FormularioCinesComponent],
   templateUrl: './crear-cine.component.html',
   styleUrl: './crear-cine.component.css'
 })
