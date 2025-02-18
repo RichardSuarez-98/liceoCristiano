@@ -14,5 +14,10 @@ export class CinesService {
    public obtenerCines(): Observable<CineDTO[]>{
      return this.http.get<CineDTO[]>("http://apicodersnet.runasp.net/api/cines");
    }
- 
+
+  /* public crearGeneros(genero: GenerosCreacionDTO){
+       return this.http.post(this.urlBase,genero);
+     }*/
+
+
 }

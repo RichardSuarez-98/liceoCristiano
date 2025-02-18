@@ -9,3 +9,8 @@ table{
 table button{
     margin-left: 1rem;
 }
+mat-form-field{
+    display: block;
+    width: 100%;
+    padding-top: 20px;
+}
