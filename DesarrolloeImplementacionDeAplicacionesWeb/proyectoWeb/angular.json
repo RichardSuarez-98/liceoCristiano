@@ -13,7 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proyecto-web",
+            "baseHref": "/miprimeraappwebprod/",
+            "allowedCommonJsDependencies": ["moment","sweetalert2","leaflet"],
+            "outputPath": "docs/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -43,8 +45,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2mb",
+                  "maximumError": "2.5MB"
                 },
                 {
                   "type": "anyComponentStyle",
