@@ -1,0 +1,16 @@
+<h1 style="text-align: center;">Dragon Ball Z</h1>
+@for (item of personaje; track $index) {
+    <div class="inDragon">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">{{ item.name }}</h3>
+              <img [src]="item.image" class="card-img-top" alt="...">
+              <h4 class="card-title"><b>Ki:</b> {{ item.ki }}</h4>
+              <h4 class="card-title"><b>MaxKi:</b> {{ item.maxKi }}</h4>
+              <h4 class="card-title"><b>Raza:</b> {{ item.race }}</h4>
+            </div>
+          </div>
+    </div>
+    
+}
+

@@ -1,0 +1,15 @@
+/* Estilos para las imágenes */
+.card-img-top {
+    width: 20%;      
+    height: 100px;   
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  
+  }
+
+
+.inDragon{
+    display: inline-flex;
+    padding-left: 40px;
+    margin: 10px;
+  }

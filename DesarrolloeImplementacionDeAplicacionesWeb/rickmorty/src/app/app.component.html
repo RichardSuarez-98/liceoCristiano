@@ -1,0 +1,13 @@
+<h1 style="text-align: center;">Rick & Morty</h1>
+@for (item of personajes; track $index) {
+    <div class="inDragon">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">{{ item.name }}</h3>
+              <img [src]="item.image" class="card-img-top" alt="...">
+              <h4 class="card-title"><b>Especie:</b> {{ item.species }}</h4>
+              <h4 class="card-title"><b>Estado:</b> {{ item.status }}</h4>
+            </div>
+          </div>
+    </div>
+}
